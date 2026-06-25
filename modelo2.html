@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelo 2 — StrangerDrug</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    .profile {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 40px;
+      transition: color 0.3s;
+    }
+    .back-btn:hover { color: #ff0000; }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .img-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 180px;
+      height: 240px;
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(255,0,0,0.15);
+      position: relative;
+      z-index: 1;
+    }
+
+    .heart-silhouette .shape-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 140%;
+      height: 140%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+      filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.25));
+    }
+
+    .profile-header .info h1 {
+      font-size: 2.5rem;
+      color: #ff0000;
+      margin-bottom: 8px;
+      text-shadow: 0 0 30px rgba(255,0,0,0.2);
+    }
+
+    .profile-header .info .tag {
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .profile-header .info .desc {
+      color: rgba(255,255,255,0.5);
+      margin-top: 12px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .videos-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #fff;
+    }
+    .videos-section h2 span { color: #ff0000; }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .video-card {
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .video-thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .video-thumb .play {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #fff;
+      transition: transform 0.3s;
+    }
+    .video-card:hover .play { transform: scale(1.1); }
+
+    .video-thumb .duration {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      padding: 3px 10px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    .video-info {
+      padding: 14px 16px;
+    }
+    .video-info h4 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .video-info p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    @media (max-width: 600px) {
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+      .img-wrapper { width: 140px; height: 186px; }
+      .videos-grid { grid-template-columns: 1fr; }
+      .profile-header .info h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile">
+    <a href="index.html" class="back-btn">&larr; Volver</a>
+
+    <div class="profile-header">
+      <div class="img-wrapper heart-silhouette">
+        <svg class="shape-bg" viewBox="0 0 100 92" preserveAspectRatio="xMidYMid meet">
+          <path d="M50,88 C15,55 0,40 0,25 C0,12 12,0 25,0 C35,0 45,8 50,18 C55,8 65,0 75,0 C88,0 100,12 100,25 C100,40 85,55 50,88Z" fill="rgba(255,0,0,0.15)"/>
+        </svg>
+        <img src="img/Imagen pegada.png" alt="Modelo 2">
+      </div>
+      <div class="info">
+        <h1>Modelo 2</h1>
+        <p class="desc">Modelo versátil especializada en campañas comerciales y contenido audiovisual.</p>
+      </div>
+    </div>
+
+    <div class="videos-section">
+      <h2>Mis <span>Videos</span></h2>
+      <div class="videos-grid">
+        <div class="video-card">
+          <div class="video-thumb">
+            <img src="img/Imagen pegada.png" alt="">
+            <div class="play">&#x25B6;</div>
+            <span class="duration">2:15</span>
+          </div>
+          <div class="video-info">
+            <h4>Video 1</h4>
+            <p>Detrás de cámara</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb">
+            <img src="img/Imagen pegada.png" alt="">
+            <div class="play">&#x25B6;</div>
+            <span class="duration">1:55</span>
+          </div>
+          <div class="video-info">
+            <h4>Video 2</h4>
+            <p>Spot publicitario</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumb">
+            <img src="img/Imagen pegada.png" alt="">
+            <div class="play">&#x25B6;</div>
+            <span class="duration">4:00</span>
+          </div>
+          <div class="video-info">
+            <h4>Video 3</h4>
+            <p>Entrevista</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
