@@ -57,16 +57,19 @@
       z-index: 1;
     }
 
-    .heart-silhouette .shape-bg {
+    .square-silhouette::before {
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
       width: 140%;
       height: 140%;
       transform: translate(-50%, -50%);
+      background: rgba(255, 0, 0, 0.15);
+      clip-path: inset(0);
       z-index: 0;
-      pointer-events: none;
-      filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.25));
+      filter: blur(4px);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.25);
     }
 
     .profile-header .info h1 {
@@ -182,10 +185,7 @@
     <a href="index.html" class="back-btn">&larr; Volver</a>
 
     <div class="profile-header">
-      <div class="img-wrapper heart-silhouette">
-        <svg class="shape-bg" viewBox="0 0 100 92" preserveAspectRatio="xMidYMid meet">
-          <path d="M50,88 C15,55 0,40 0,25 C0,12 12,0 25,0 C35,0 45,8 50,18 C55,8 65,0 75,0 C88,0 100,12 100,25 C100,40 85,55 50,88Z" fill="rgba(255,0,0,0.15)"/>
-        </svg>
+      <div class="img-wrapper square-silhouette">
         <img src="img/Imagen pegada.png" alt="Modelo 2">
       </div>
       <div class="info">

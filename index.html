@@ -300,7 +300,7 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      max-width: 320px;
+      max-width: 260px;
     }
 
     .models-grid .bottom-row {
@@ -308,7 +308,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 30px;
       width: 100%;
-      max-width: 700px;
+      max-width: 560px;
     }
 
     .model-card {
@@ -341,46 +341,10 @@
       transition: transform 0.6s ease;
     }
 
-    /* ===== CARD WRAPPER + SHAPES BEHIND ===== */
+    /* ===== CARD WRAPPER ===== */
     .card-wrap {
       position: relative;
       width: 100%;
-    }
-
-    .card-wrap .card-shape {
-      position: absolute;
-      z-index: 0;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .card-wrap .card-shape svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .card-wrap .card-shape svg polygon,
-    .card-wrap .card-shape svg path {
-      fill: #888;
-      stroke: #888;
-      stroke-width: 1;
-    }
-
-    .card-wrap .card-shape.star {
-      width: 135%;
-      height: 135%;
-      opacity: 0.15;
-    }
-
-    .card-wrap .card-shape.heart {
-      width: 125%;
-      height: 125%;
-      opacity: 0.12;
     }
 
     .card-wrap .model-card {
@@ -626,12 +590,12 @@
 
       .models-grid .bottom-row {
         grid-template-columns: 1fr;
-        max-width: 280px;
+        max-width: 230px;
         gap: 20px;
       }
 
       .models-grid .top-row {
-        max-width: 250px;
+        max-width: 210px;
       }
 
       .model-info {
@@ -713,11 +677,11 @@
       }
 
       .models-grid .bottom-row {
-        max-width: 230px;
+        max-width: 190px;
       }
 
       .models-grid .top-row {
-        max-width: 210px;
+        max-width: 180px;
       }
 
       .social-bar {
@@ -817,11 +781,8 @@
     .fade-in:nth-child(2) { transition-delay: 0.15s; }
     .fade-in:nth-child(3) { transition-delay: 0.3s; }
 
-    .clip-star {
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    }
-    .clip-heart {
-      clip-path: url(#heartClip);
+    .clip-square {
+      clip-path: inset(0);
     }
   </style>
 </head>
@@ -873,18 +834,12 @@
     <div class="models-grid">
       <div class="top-row">
         <div class="card-wrap">
-          <div class="card-shape star">
-            <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
-              <polygon points="100,10 123,75 190,75 135,115 155,185 100,145 45,185 65,115 10,75 77,75" />
-            </svg>
-          </div>
           <a href="modelo1.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
-            <div class="model-image clip-star">
+            <div class="model-image">
               <img src="img/Imagen pegada (2).png" alt="Modelo 1" loading="lazy">
             </div>
             <div class="model-info">
               <h3>Modelo 1</h3>
-              <span class="model-tag">&#x2605; Destacada</span>
             </div>
           </a>
           <div class="video-panel">
@@ -906,13 +861,8 @@
 
       <div class="bottom-row">
         <div class="card-wrap">
-          <div class="card-shape heart">
-            <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
-              <path d="M100,180 C40,120 0,80 0,50 C0,20 20,0 50,0 C75,0 90,20 100,40 C110,20 125,0 150,0 C180,0 200,20 200,50 C200,80 160,120 100,180 Z" />
-            </svg>
-          </div>
           <a href="modelo2.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
-            <div class="model-image clip-heart">
+            <div class="model-image">
               <img src="img/Imagen pegada.png" alt="Modelo 2" loading="lazy">
             </div>
             <div class="model-info">
@@ -936,13 +886,8 @@
         </div>
 
         <div class="card-wrap">
-          <div class="card-shape heart">
-            <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
-              <path d="M100,180 C40,120 0,80 0,50 C0,20 20,0 50,0 C75,0 90,20 100,40 C110,20 125,0 150,0 C180,0 200,20 200,50 C200,80 160,120 100,180 Z" />
-            </svg>
-          </div>
           <a href="modelo3.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
-            <div class="model-image clip-heart">
+            <div class="model-image">
               <div class="model-placeholder">
                 <div class="model-placeholder-content">
                   <div class="plus">+</div>
@@ -975,14 +920,6 @@
   
 
 
-
-  <svg width="0" height="0" style="position:absolute;">
-    <defs>
-      <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
-        <path d="M0.5,0.9 C0.2,0.6 0,0.45 0,0.28 C0,0.12 0.12,0 0.28,0 C0.4,0 0.5,0.1 0.5,0.2 C0.5,0.1 0.6,0 0.72,0 C0.88,0 1,0.12 1,0.28 C1,0.45 0.8,0.6 0.5,0.9Z"/>
-      </clipPath>
-    </defs>
-  </svg>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
