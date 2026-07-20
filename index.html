@@ -448,7 +448,23 @@
         max-width: 220px;
       }
 
+      .pill-section {
+        margin-top: 16px;
+      }
 
+      .pill-section .top-label {
+        font-size: 1.2rem;
+        letter-spacing: 4px;
+        margin-bottom: 8px;
+      }
+
+      .pill-btn-wrap {
+        margin-top: 0;
+      }
+
+      .pill-btn-wrap img {
+        max-width: 180px;
+      }
 
       .models {
         padding: 50px 15px;
@@ -642,6 +658,51 @@
       transform: scale(1.1);
     }
 
+    /* ===== PILL BUTTON ===== */
+    .pill-section {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .pill-section .top-label {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      margin-bottom: 10px;
+      display: block;
+      text-shadow: 0 0 30px rgba(255, 0, 0, 0.15);
+    }
+
+    .pill-section .top-label span {
+      color: #ff0000;
+    }
+
+    .pill-btn-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .pill-btn-wrap a {
+      display: block;
+      line-height: 0;
+      perspective: 400px;
+    }
+
+    .pill-btn-wrap img {
+      display: block;
+      max-width: 260px;
+      width: 100%;
+      height: auto;
+      transition: transform 0.5s ease;
+    }
+
+    .pill-btn-wrap img:hover {
+      transform: rotateY(360deg);
+    }
+
     /* ===== SCROLL ANIMATION ===== */
     .fade-in {
       opacity: 0;
@@ -693,6 +754,16 @@
     </div>
 
   </section>
+
+  <!-- ===== PILL BUTTON ===== -->
+  <div class="pill-section">
+    <span class="top-label">Top <span>Models</span></span>
+    <div class="pill-btn-wrap">
+      <a href="https://onlyfans.com/strangeroses" target="_blank" rel="noopener">
+        <img src="img/image_6353be83__1_-removebg-preview.png" alt="Píldora">
+      </a>
+    </div>
+  </div>
 
   <!-- ===== MODELS ===== -->
   <section class="models" id="models">
