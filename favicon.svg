@@ -1,0 +1,65 @@
+<svg width="520" height="520" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#1a1a1a"/>
+      <stop offset="1" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <radialGradient id="rose" cx="0.42" cy="0.32" r="0.85">
+      <stop offset="0" stop-color="#ff4d4d"/>
+      <stop offset="0.5" stop-color="#e60000"/>
+      <stop offset="1" stop-color="#9e0000"/>
+    </radialGradient>
+    <radialGradient id="leaf" cx="0.4" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#4caf50"/>
+      <stop offset="1" stop-color="#1b5e20"/>
+    </radialGradient>
+    <radialGradient id="bud" cx="0.4" cy="0.35" r="0.9">
+      <stop offset="0" stop-color="#ff7a7a"/>
+      <stop offset="1" stop-color="#cc0000"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="1" y="1" width="98" height="98" rx="23" fill="url(#bg)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+
+  <circle cx="50" cy="46" r="33" fill="rgba(255,0,0,0.12)"/>
+  <circle cx="50" cy="46" r="24" fill="rgba(255,0,0,0.10)"/>
+
+  <g fill="url(#rose)">
+    <path d="M50 23C57.5 31 59.5 44 50 53C40.5 44 42.5 31 50 23Z" transform="rotate(0 50 47)"/>
+    <path d="M50 23C57.5 31 59.5 44 50 53C40.5 44 42.5 31 50 23Z" transform="rotate(72 50 47)"/>
+    <path d="M50 23C57.5 31 59.5 44 50 53C40.5 44 42.5 31 50 23Z" transform="rotate(144 50 47)"/>
+    <path d="M50 23C57.5 31 59.5 44 50 53C40.5 44 42.5 31 50 23Z" transform="rotate(216 50 47)"/>
+    <path d="M50 23C57.5 31 59.5 44 50 53C40.5 44 42.5 31 50 23Z" transform="rotate(288 50 47)"/>
+  </g>
+
+  <g fill="url(#rose)">
+    <path d="M50 31C55.5 38 57 47 50 53.5C43 47 44.5 38 50 31Z" transform="rotate(30 50 48)"/>
+    <path d="M50 31C55.5 38 57 47 50 53.5C43 47 44.5 38 50 31Z" transform="rotate(90 50 48)"/>
+    <path d="M50 31C55.5 38 57 47 50 53.5C43 47 44.5 38 50 31Z" transform="rotate(150 50 48)"/>
+    <path d="M50 31C55.5 38 57 47 50 53.5C43 47 44.5 38 50 31Z" transform="rotate(210 50 48)"/>
+    <path d="M50 31C55.5 38 57 47 50 53.5C43 47 44.5 38 50 31Z" transform="rotate(270 50 48)"/>
+    <path d="M50 31C55.5 38 57 47 50 53.5C43 47 44.5 38 50 31Z" transform="rotate(330 50 48)"/>
+  </g>
+
+  <g fill="url(#rose)">
+    <path d="M50 38C54 43 55.5 48.5 50 52.5C44.5 48.5 46 43 50 38Z" transform="rotate(18 50 49)"/>
+    <path d="M50 38C54 43 55.5 48.5 50 52.5C44.5 48.5 46 43 50 38Z" transform="rotate(90 50 49)"/>
+    <path d="M50 38C54 43 55.5 48.5 50 52.5C44.5 48.5 46 43 50 38Z" transform="rotate(162 50 49)"/>
+    <path d="M50 38C54 43 55.5 48.5 50 52.5C44.5 48.5 46 43 50 38Z" transform="rotate(234 50 49)"/>
+    <path d="M50 38C54 43 55.5 48.5 50 52.5C44.5 48.5 46 43 50 38Z" transform="rotate(306 50 49)"/>
+  </g>
+
+  <g fill="url(#bud)">
+    <path d="M50 42C52 45 52.50 48 50 51C47.5 48 48 45 50 42Z" transform="rotate(45 50 49.5)"/>
+    <path d="M50 42C52 45 52.50 48 50 51C47.5 48 48 45 50 42Z" transform="rotate(135 50 49.5)"/>
+    <path d="M50 42C52 45 52.50 48 50 51C47.5 48 48 45 50 42Z" transform="rotate(225 50 49.5)"/>
+    <path d="M50 42C52 45 52.50 48 50 51C47.5 48 48 45 50 42Z" transform="rotate(315 50 49.5)"/>
+  </g>
+
+  <circle cx="50" cy="49.5" r="3.4" fill="#ff8a8a"/>
+
+  <ellipse cx="34" cy="71" rx="10.5" ry="6" transform="rotate(-38 34 71)" fill="url(#leaf)"/>
+  <ellipse cx="64" cy="73" rx="10.5" ry="6" transform="rotate(35 64 73)" fill="url(#leaf)"/>
+
+  <ellipse cx="44" cy="35" rx="7" ry="4.5" transform="rotate(-28 44 35)" fill="#ffffff" opacity="0.16"/>
+</svg>
