@@ -226,6 +226,7 @@
     .card-wrap {
       position: relative;
       width: 100%;
+      min-width: 0;
     }
 
     .card-wrap .model-card {
@@ -264,6 +265,7 @@
       flex: 1;
       cursor: pointer;
       text-align: center;
+      min-width: 0;
     }
 
     .video-panel .v-thumb {
@@ -483,13 +485,13 @@
       }
 
       .models-grid .bottom-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         max-width: 230px;
         gap: 20px;
       }
 
       .models-grid .top-row {
-        max-width: 210px;
+        max-width: 230px;
       }
 
       .model-info {
@@ -522,17 +524,31 @@
         visibility: visible;
         transform: none;
         border-radius: 0 0 12px 12px;
-        padding: 10px;
-        gap: 6px;
+        padding: 10px 12px 12px;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .video-panel .v-item {
+        flex: 0 1 52px;
+        max-width: 64px;
       }
 
       .video-panel .v-thumb {
-        aspect-ratio: 16/9;
-        min-height: 50px;
+        aspect-ratio: 1/1;
+        min-height: 0;
+        max-height: 52px;
+        max-width: 64px;
+        margin: 0 auto;
       }
 
       .video-panel .v-play {
-        font-size: 1.2rem;
+        font-size: 1rem;
+      }
+
+      .video-panel .v-label {
+        font-size: 0.6rem;
+        margin-top: 4px;
       }
 
       .social-bar {
@@ -573,7 +589,7 @@
       }
 
       .models-grid .top-row {
-        max-width: 180px;
+        max-width: 190px;
       }
 
       .social-bar {
