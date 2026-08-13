@@ -200,6 +200,12 @@
       gap: 30px;
       width: 100%;
       max-width: 560px;
+      margin-top: 120px;
+    }
+
+    .models-grid .bottom-row .card-wrap:nth-child(1),
+    .models-grid .bottom-row .card-wrap:nth-child(2) {
+      margin-bottom: 120px;
     }
 
     .model-card {
@@ -287,6 +293,13 @@
       justify-content: center;
       border: 1px solid rgba(255, 255, 255, 0.06);
       transition: border-color 0.3s;
+    }
+
+    .video-panel video.v-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: pointer;
     }
 
     .video-panel .v-thumb:hover {
@@ -495,13 +508,19 @@
       }
 
       .models-grid .bottom-row {
+        margin-top: 40px;
+      }
+
+      .models-grid .bottom-row .card-wrap:nth-child(1),
+      .models-grid .bottom-row .card-wrap:nth-child(2) {
+        margin-bottom: 20px;
+      }
+
+      .models-grid .bottom-row,
+      .models-grid .top-row {
         grid-template-columns: minmax(0, 1fr);
         max-width: 230px;
         gap: 20px;
-      }
-
-      .models-grid .top-row {
-        max-width: 230px;
       }
 
       .model-info {
@@ -594,10 +613,7 @@
         font-size: 1.5rem;
       }
 
-      .models-grid .bottom-row {
-        max-width: 190px;
-      }
-
+      .models-grid .bottom-row,
       .models-grid .top-row {
         max-width: 190px;
       }
@@ -810,15 +826,15 @@
           </a>
           <div class="video-panel">
             <div class="v-item">
-              <div class="v-thumb"><span class="v-play">&#9654;</span></div>
+              <video class="v-thumb" src="videos/valeria/IMG_2007.MOV" preload="metadata" controls playsinline></video>
               <p class="v-label">Video 1</p>
             </div>
             <div class="v-item">
-              <div class="v-thumb"><span class="v-play">&#9654;</span></div>
+              <video class="v-thumb" src="videos/valeria/IMG_2051.MOV" preload="metadata" controls playsinline></video>
               <p class="v-label">Video 2</p>
             </div>
             <div class="v-item">
-              <div class="v-thumb"><span class="v-play">&#9654;</span></div>
+              <video class="v-thumb" src="videos/valeria/IMG_2052.MOV" preload="metadata" controls playsinline></video>
               <p class="v-label">Video 3</p>
             </div>
           </div>
@@ -837,7 +853,57 @@
           </a>
           <div class="video-panel">
             <div class="v-item">
+              <video class="v-thumb" src="videos/camila/IMG_6040.MOV" preload="metadata" controls playsinline></video>
+              <p class="v-label">Video 1</p>
+            </div>
+            <div class="v-item">
+              <video class="v-thumb" src="videos/camila/IMG_2067.MOV" preload="metadata" controls playsinline></video>
+              <p class="v-label">Video 2</p>
+            </div>
+            <div class="v-item">
               <div class="v-thumb"><span class="v-play">&#9654;</span></div>
+              <p class="v-label">Video 3</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-wrap">
+          <a href="modelo3.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
+            <div class="model-image">
+              <img src="img/lua.jpeg" alt="Modelo 3" loading="lazy">
+            </div>
+            <div class="model-info">
+              <h3>Modelo 3</h3>
+            </div>
+          </a>
+          <div class="video-panel">
+            <div class="v-item">
+              <video class="v-thumb" src="videos/lua/IMG_2085.MOV" preload="metadata" controls playsinline></video>
+              <p class="v-label">Video 1</p>
+            </div>
+            <div class="v-item">
+              <video class="v-thumb" src="videos/lua/IMG_2086.MOV" preload="metadata" controls playsinline></video>
+              <p class="v-label">Video 2</p>
+            </div>
+            <div class="v-item">
+              <div class="v-thumb"><span class="v-play">&#9654;</span></div>
+              <p class="v-label">Video 3</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-wrap">
+          <a href="modelo4.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
+            <div class="model-image">
+              <img src="img/ashley.jpeg" alt="Modelo 4" loading="lazy">
+            </div>
+            <div class="model-info">
+              <h3>Modelo 4</h3>
+            </div>
+          </a>
+          <div class="video-panel">
+            <div class="v-item">
+              <video class="v-thumb" src="videos/ashly/ashly.mp4" preload="metadata" controls playsinline></video>
               <p class="v-label">Video 1</p>
             </div>
             <div class="v-item">
@@ -852,7 +918,7 @@
         </div>
 
         <div class="card-wrap">
-          <a href="modelo3.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
+          <a href="modelo5.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
             <div class="model-image">
               <div class="model-placeholder">
                 <div class="model-placeholder-content">
@@ -862,7 +928,7 @@
               </div>
             </div>
             <div class="model-info">
-              <h3>Modelo 3</h3>
+              <h3>Modelo 5</h3>
             </div>
           </a>
           <div class="video-panel">
@@ -880,6 +946,7 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
   </section>
 
