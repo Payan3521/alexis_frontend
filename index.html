@@ -285,21 +285,24 @@
     }
 
     .video-panel .v-thumb {
+      position: relative;
       aspect-ratio: 16/9;
       background: #1a1a1a;
       border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.06);
       transition: border-color 0.3s;
     }
 
-    .video-panel video.v-thumb {
+    .video-panel .v-thumb img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      cursor: pointer;
+      background: #000;
+      display: block;
     }
 
     .video-panel .v-thumb:hover {
@@ -307,14 +310,37 @@
     }
 
     .video-panel .v-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.6rem;
-      color: rgba(255, 255, 255, 0.2);
-      transition: color 0.3s;
+      color: rgba(255, 255, 255, 0.35);
+      transition: color 0.3s, background 0.3s;
       line-height: 1;
+      background: rgba(0, 0, 0, 0.15);
     }
 
     .video-panel .v-thumb:hover .v-play {
       color: #ff0000;
+      background: rgba(0, 0, 0, 0);
+    }
+
+    .video-panel .v-item {
+      cursor: pointer;
+    }
+
+    .video-panel .v-item.placeholder {
+      cursor: default;
+    }
+
+    .video-panel .v-item.placeholder .v-thumb:hover {
+      border-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .video-panel .v-item.placeholder .v-thumb:hover .v-play {
+      color: rgba(255, 255, 255, 0.2);
     }
 
     .video-panel .v-label {
@@ -763,6 +789,56 @@
     .clip-square {
       clip-path: inset(0);
     }
+
+    /* ===== LIGHTBOX VIDEO ===== */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s;
+    }
+
+    #lightbox.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #lightbox video {
+      max-width: 92vw;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      background: #000;
+      border-radius: 8px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8);
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(20, 20, 20, 0.7);
+      color: #fff;
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .lb-close:hover {
+      border-color: #ff0000;
+      color: #ff0000;
+    }
   </style>
 </head>
 <body>
@@ -818,23 +894,23 @@
         <div class="card-wrap">
           <a href="modelo1.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
             <div class="model-image">
-              <img src="img/Imagen pegada (2).png" alt="Modelo 1" loading="lazy">
+              <img src="img/modelo1.webp" alt="Modelo 1" loading="lazy">
             </div>
             <div class="model-info">
               <h3>Modelo 1</h3>
             </div>
           </a>
           <div class="video-panel">
-            <div class="v-item">
-              <video class="v-thumb" src="videos/valeria/IMG_2007.MOV" preload="metadata" controls playsinline></video>
+            <div class="v-item" data-src="videos/valeria/IMG_2007.mp4">
+              <div class="v-thumb"><img src="videos/valeria/thumbs/IMG_2007.jpg" alt="Video 1" loading="lazy"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 1</p>
             </div>
-            <div class="v-item">
-              <video class="v-thumb" src="videos/valeria/IMG_2051.MOV" preload="metadata" controls playsinline></video>
+            <div class="v-item" data-src="videos/valeria/IMG_2051.mp4">
+              <div class="v-thumb"><img src="videos/valeria/thumbs/IMG_2051.jpg" alt="Video 2" loading="lazy"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 2</p>
             </div>
-            <div class="v-item">
-              <video class="v-thumb" src="videos/valeria/IMG_2052.MOV" preload="metadata" controls playsinline></video>
+            <div class="v-item" data-src="videos/valeria/IMG_2052.mp4">
+              <div class="v-thumb"><img src="videos/valeria/thumbs/IMG_2052.jpg" alt="Video 3" loading="lazy"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 3</p>
             </div>
           </div>
@@ -845,22 +921,22 @@
         <div class="card-wrap">
           <a href="modelo2.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
             <div class="model-image">
-              <img src="img/Imagen pegada.png" alt="Modelo 2" loading="lazy">
+              <img src="img/modelo2.webp" alt="Modelo 2" loading="lazy">
             </div>
             <div class="model-info">
               <h3>Modelo 2</h3>
             </div>
           </a>
           <div class="video-panel">
-            <div class="v-item">
-              <video class="v-thumb" src="videos/camila/IMG_6040.MOV" preload="metadata" controls playsinline></video>
+            <div class="v-item" data-src="videos/camila/IMG_6040.mp4">
+              <div class="v-thumb"><img src="videos/camila/thumbs/IMG_6040.jpg" alt="Video 1" loading="lazy"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 1</p>
             </div>
-            <div class="v-item">
-              <video class="v-thumb" src="videos/camila/IMG_2067.MOV" preload="metadata" controls playsinline></video>
+            <div class="v-item" data-src="videos/camila/IMG_2067.mp4">
+              <div class="v-thumb"><img src="videos/camila/thumbs/IMG_2067.jpg" alt="Video 2" loading="lazy"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 2</p>
             </div>
-            <div class="v-item">
+            <div class="v-item placeholder">
               <div class="v-thumb"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 3</p>
             </div>
@@ -870,22 +946,22 @@
         <div class="card-wrap">
           <a href="modelo3.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
             <div class="model-image">
-              <img src="img/lua.jpeg" alt="Modelo 3" loading="lazy">
+              <img src="img/modelo3.webp" alt="Modelo 3" loading="lazy">
             </div>
             <div class="model-info">
               <h3>Modelo 3</h3>
             </div>
           </a>
           <div class="video-panel">
-            <div class="v-item">
-              <video class="v-thumb" src="videos/lua/IMG_2085.MOV" preload="metadata" controls playsinline></video>
+            <div class="v-item" data-src="videos/lua/IMG_2085.mp4">
+              <div class="v-thumb"><img src="videos/lua/thumbs/IMG_2085.jpg" alt="Video 1" loading="lazy"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 1</p>
             </div>
-            <div class="v-item">
-              <video class="v-thumb" src="videos/lua/IMG_2086.MOV" preload="metadata" controls playsinline></video>
+            <div class="v-item" data-src="videos/lua/IMG_2086.mp4">
+              <div class="v-thumb"><img src="videos/lua/thumbs/IMG_2086.jpg" alt="Video 2" loading="lazy"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 2</p>
             </div>
-            <div class="v-item">
+            <div class="v-item placeholder">
               <div class="v-thumb"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 3</p>
             </div>
@@ -895,22 +971,22 @@
         <div class="card-wrap">
           <a href="modelo4.html" class="model-card fade-in" style="text-decoration:none;color:inherit;display:block">
             <div class="model-image">
-              <img src="img/ashley.jpeg" alt="Modelo 4" loading="lazy">
+              <img src="img/modelo4.webp" alt="Modelo 4" loading="lazy">
             </div>
             <div class="model-info">
               <h3>Modelo 4</h3>
             </div>
           </a>
           <div class="video-panel">
-            <div class="v-item">
-              <video class="v-thumb" src="videos/ashly/ashly.mp4" preload="metadata" controls playsinline></video>
+            <div class="v-item" data-src="videos/ashly/ashly.mp4">
+              <div class="v-thumb"><img src="videos/ashly/thumbs/ashly.jpg" alt="Video 1" loading="lazy"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 1</p>
             </div>
-            <div class="v-item">
+            <div class="v-item placeholder">
               <div class="v-thumb"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 2</p>
             </div>
-            <div class="v-item">
+            <div class="v-item placeholder">
               <div class="v-thumb"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 3</p>
             </div>
@@ -932,15 +1008,15 @@
             </div>
           </a>
           <div class="video-panel">
-            <div class="v-item">
+            <div class="v-item placeholder">
               <div class="v-thumb"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 1</p>
             </div>
-            <div class="v-item">
+            <div class="v-item placeholder">
               <div class="v-thumb"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 2</p>
             </div>
-            <div class="v-item">
+            <div class="v-item placeholder">
               <div class="v-thumb"><span class="v-play">&#9654;</span></div>
               <p class="v-label">Video 3</p>
             </div>
@@ -954,6 +1030,12 @@
 
 
 
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lb-close" aria-label="Cerrar">&times;</button>
+    <video id="lb-video" controls playsinline preload="none"></video>
+  </div>
+
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -965,6 +1047,32 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ===== VIDEO LIGHTBOX (lazy: el video solo se descarga al hacer click) =====
+    const lightbox = document.getElementById('lightbox');
+    const lbVideo = document.getElementById('lb-video');
+    const lbClose = document.getElementById('lb-close');
+
+    function openVideo(src) {
+      lbVideo.src = src;
+      lightbox.classList.add('open');
+      lbVideo.play().catch(() => {});
+    }
+
+    function closeVideo() {
+      lbVideo.pause();
+      lbVideo.removeAttribute('src');
+      lbVideo.load();
+      lightbox.classList.remove('open');
+    }
+
+    document.querySelectorAll('.video-panel .v-item[data-src]').forEach(item => {
+      item.addEventListener('click', () => openVideo(item.dataset.src));
+    });
+
+    lbClose.addEventListener('click', closeVideo);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeVideo(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeVideo(); });
   </script>
 </body>
 </html>
