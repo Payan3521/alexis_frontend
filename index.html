@@ -1033,7 +1033,7 @@
   <!-- ===== LIGHTBOX ===== -->
   <div id="lightbox" aria-hidden="true">
     <button class="lb-close" id="lb-close" aria-label="Cerrar">&times;</button>
-    <video id="lb-video" controls playsinline preload="none"></video>
+    <video id="lb-video" controls playsinline preload="auto"></video>
   </div>
 
   <script>
@@ -1055,8 +1055,14 @@
 
     function openVideo(src) {
       lbVideo.src = src;
+      lbVideo.currentTime = 0;
       lightbox.classList.add('open');
-      lbVideo.play().catch(() => {});
+      lbVideo.load();
+      const tryPlay = () => {
+        lbVideo.play().catch(() => {});
+      };
+      lbVideo.addEventListener('canplay', tryPlay, { once: true });
+      tryPlay();
     }
 
     function closeVideo() {
