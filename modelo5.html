@@ -130,16 +130,23 @@
     }
 
     .site-logo {
-      font-family: 'Times New Roman', Times, serif;
-      font-weight: 900;
-      font-size: 1.5rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #ff0000;
+      display: flex;
+      align-items: center;
       text-decoration: none;
-      text-shadow: 0 0 18px rgba(255, 0, 0, 0.35);
       line-height: 1;
-      white-space: nowrap;
+    }
+
+    .site-logo img {
+      height: 46px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 0 14px rgba(255, 0, 0, 0.45));
+      transition: transform 0.4s ease, filter 0.3s;
+    }
+
+    .site-logo:hover img {
+      transform: scale(1.06);
+      filter: drop-shadow(0 0 22px rgba(255, 0, 0, 0.75));
     }
 
     .site-nav {
@@ -415,7 +422,7 @@
 
     @media (max-width: 600px) {
       .site-header { padding: 12px 18px; }
-      .site-logo { font-size: 1.2rem; letter-spacing: 3px; }
+      .site-logo img { height: 38px; }
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-nav { flex-wrap: wrap; justify-content: center; }
     }
@@ -424,7 +431,7 @@
 <body>
   <!-- ===== HEADER ===== -->
   <header class="site-header">
-    <a href="index.html" class="site-logo">Strangeroses</a>
+    <a href="index.html" class="site-logo"><img src="img/IMG_2197.JPG-removebg-preview.png" alt="Strangeroses"></a>
     <nav class="site-nav" id="siteNav">
       <a href="index.html">Inicio</a>
       <a href="index.html#models" class="active">Modelos</a>
