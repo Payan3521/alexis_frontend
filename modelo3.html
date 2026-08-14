@@ -187,9 +187,351 @@
       .videos-grid { grid-template-columns: 1fr; }
       .profile-header .info h1 { font-size: 2rem; }
     }
-  </style>
+  
+    /* ===== SITE HEADER / FOOTER (compartido) ===== */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px; width: 0;
+      background: linear-gradient(90deg, #ff0000, rgba(255, 0, 0, 0.35));
+      z-index: 600;
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 28px;
+      background: rgba(10, 10, 10, 0.82);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 0, 0, 0.12);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .site-logo {
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #ff0000;
+      text-decoration: none;
+      text-shadow: 0 0 18px rgba(255, 0, 0, 0.35);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .site-nav > a {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      position: relative;
+      padding: 4px 0;
+      transition: color 0.3s;
+    }
+
+    .site-nav > a::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #ff0000, transparent);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .site-nav > a:hover,
+    .site-nav > a.active { color: #fff; }
+
+    .site-nav > a:hover::after,
+    .site-nav > a.active::after { transform: scaleX(1); }
+
+    .header-social,
+    .nav-social-mobile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-social a,
+    .nav-social-mobile a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .header-social a:hover,
+    .nav-social-mobile a:hover {
+      border-color: rgba(255, 0, 0, 0.4);
+      box-shadow: 0 0 18px rgba(255, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .header-social a img,
+    .nav-social-mobile a img {
+      width: 17px;
+      height: 17px;
+      object-fit: contain;
+      filter: brightness(0.6) grayscale(0.3);
+      transition: filter 0.3s;
+    }
+
+    .header-social a:hover img,
+    .nav-social-mobile a:hover img {
+      filter: brightness(1) grayscale(0);
+    }
+
+    .nav-social-mobile { display: none; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .nav-toggle span {
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .header-social { display: none; }
+      .site-nav {
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(10, 10, 10, 0.96);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255, 0, 0, 0.12);
+        padding: 0 28px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+      }
+      .site-nav.open {
+        max-height: 460px;
+        padding: 8px 28px 22px;
+      }
+      .site-nav > a {
+        width: 100%;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .site-nav > a::after { display: none; }
+      .nav-social-mobile {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding-top: 16px;
+      }
+    }
+
+    .site-footer {
+      margin-top: 80px;
+      background: #0d0d0d;
+      border-top: 1px solid rgba(255, 0, 0, 0.15);
+      position: relative;
+    }
+
+    .site-footer::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 260px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #ff0000, transparent);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 28px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #ff0000;
+      text-decoration: none;
+      text-shadow: 0 0 18px rgba(255, 0, 0, 0.3);
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .footer-social a:hover {
+      border-color: rgba(255, 0, 0, 0.4);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.18);
+      transform: translateY(-3px);
+    }
+
+    .footer-social a img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      filter: brightness(0.6) grayscale(0.3);
+      transition: filter 0.3s;
+    }
+
+    .footer-social a:hover img { filter: brightness(1) grayscale(0); }
+
+    .footer-nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-nav a {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-nav a:hover { color: #ff0000; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 18px 28px;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      color: rgba(255, 255, 255, 0.28);
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+    }
+
+    .footer-bottom .footer-note { margin-top: 4px; color: rgba(255, 255, 255, 0.18); }
+
+    #toTop {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 0, 0, 0.35);
+      background: rgba(20, 20, 20, 0.85);
+      color: #ff0000;
+      font-size: 1rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+      z-index: 400;
+    }
+
+    #toTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    #toTop:hover { box-shadow: 0 0 24px rgba(255, 0, 0, 0.35); }
+
+    @media (max-width: 600px) {
+      .site-header { padding: 12px 18px; }
+      .site-logo { font-size: 1.2rem; letter-spacing: 3px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-nav { flex-wrap: wrap; justify-content: center; }
+    }
+</style>
 </head>
 <body>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <a href="index.html" class="site-logo">Strangeroses</a>
+    <nav class="site-nav" id="siteNav">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#models" class="active">Modelos</a>
+      <a href="https://onlyfans.com/strangeroses" target="_blank" rel="noopener">OnlyFans</a>
+      <div class="nav-social-mobile">
+      <a href="https://www.instagram.com/alexus_rey_?igsh=MWJjNDZneHVycjV0cg==" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/logoinstagram-removebg-preview.png" alt="Instagram"></a>
+      <a href="https://onlyfans.com/strangeroses" target="_blank" rel="noopener" aria-label="OnlyFans"><img src="img/logoonlyfans-removebg-preview.png" alt="OnlyFans"></a>
+      <a href="https://es.pornhub.com/model/strangeroses" target="_blank" rel="noopener" aria-label="Pornhub"><img src="img/logoporhub-removebg-preview.png" alt="Pornhub"></a>
+      <a href="https://t.me/strange_roses" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/logotelegram-removebg-preview.png" alt="Telegram"></a>
+      </div>
+    </nav>
+    <div class="header-social">
+      <a href="https://www.instagram.com/alexus_rey_?igsh=MWJjNDZneHVycjV0cg==" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/logoinstagram-removebg-preview.png" alt="Instagram"></a>
+      <a href="https://onlyfans.com/strangeroses" target="_blank" rel="noopener" aria-label="OnlyFans"><img src="img/logoonlyfans-removebg-preview.png" alt="OnlyFans"></a>
+      <a href="https://es.pornhub.com/model/strangeroses" target="_blank" rel="noopener" aria-label="Pornhub"><img src="img/logoporhub-removebg-preview.png" alt="Pornhub"></a>
+      <a href="https://t.me/strange_roses" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/logotelegram-removebg-preview.png" alt="Telegram"></a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
   <div class="profile">
     <a href="index.html" class="back-btn">&larr; Volver</a>
 
@@ -233,5 +575,68 @@
       </div>
     </div>
   </div>
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">Strangeroses</a>
+        <p>Modelos destacadas · Contenido exclusivo</p>
+      </div>
+      <div class="footer-social">
+      <a href="https://www.instagram.com/alexus_rey_?igsh=MWJjNDZneHVycjV0cg==" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/logoinstagram-removebg-preview.png" alt="Instagram"></a>
+      <a href="https://onlyfans.com/strangeroses" target="_blank" rel="noopener" aria-label="OnlyFans"><img src="img/logoonlyfans-removebg-preview.png" alt="OnlyFans"></a>
+      <a href="https://es.pornhub.com/model/strangeroses" target="_blank" rel="noopener" aria-label="Pornhub"><img src="img/logoporhub-removebg-preview.png" alt="Pornhub"></a>
+      <a href="https://t.me/strange_roses" target="_blank" rel="noopener" aria-label="Telegram"><img src="img/logotelegram-removebg-preview.png" alt="Telegram"></a>
+      </div>
+      <nav class="footer-nav">
+        <a href="index.html">Inicio</a>
+        <a href="index.html#models">Modelos</a>
+        <a href="https://onlyfans.com/strangeroses" target="_blank" rel="noopener">OnlyFans</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Strangeroses. Todos los derechos reservados.</p>
+      <p class="footer-note">Sitio de promoción para mayores de 18 años.</p>
+    </div>
+  </footer>
+
+  <div class="scroll-progress" id="scrollBar"></div>
+  <button id="toTop" aria-label="Volver arriba">&#9650;</button>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var nav = document.getElementById('siteNav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          toggle.classList.toggle('open', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      var bar = document.getElementById('scrollBar');
+      var toTop = document.getElementById('toTop');
+      var ticking = false;
+      function onScroll() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var p = max > 0 ? (h.scrollTop / max) * 100 : 0;
+        if (bar) bar.style.width = p + '%';
+        if (toTop) toTop.classList.toggle('show', h.scrollTop > 500);
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+      }, { passive: true });
+      onScroll();
+
+      if (toTop) {
+        toTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
